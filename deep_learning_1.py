@@ -141,8 +141,8 @@ model.compile(loss = 'categorical_crossentropy', # 'mean_squared_error'
 
 #____________________________________________________________
 # step9: fit model on training data
-model.fit(X_train, Y_train,
-          batch_size = 32, nb_epoch=10, verbose = 1)  
+trained_model = model.fit(X_train, Y_train,
+          batch_size = 32, nb_epoch=3, verbose = 1)  
 
 #____________________________________________________________
 # step10: evaluate mdoel on the test data
