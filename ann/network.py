@@ -49,6 +49,17 @@ class Network(object):
             a = sigmoid(np.dot(w, a)+b)
         return a
         
+    
+    def backprop(self, x, y):
+        """
+        Return a tuple ''(nabla_b, nabla_w)'' representing the
+        gradient for the cost function C_x. ''nabla_a'' and 
+        ''nabla_w'' are layer-by-layer lists of numpy arrays,
+        similar to ''self.biases'' and '''self.weights''
+        """
+        nabla_b = [np.zeros(b.shape) for b in self.biases]
+        nabla_w = [np.zeros(w.shape) for w in self.weights]
+    
     # stochastic gradient descent    
     def SGD(self, training_data, epochs, mini_batch_size, 
             eta, test_data=None):
