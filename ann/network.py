@@ -59,7 +59,12 @@ class Network(object):
         """
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
-    
+        
+        #feed forward
+        activation = x
+        activations =[x] # store all activation, layer by layer
+        
+           
     # stochastic gradient descent    
     def SGD(self, training_data, epochs, mini_batch_size, 
             eta, test_data=None):
