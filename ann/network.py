@@ -113,7 +113,7 @@ class Network(object):
         nabla_w = [np.zeros(w.shape) for w in self.weights]
         
         for x,y in mini_batch:
-            delta_nabla_b, delta_nabla_w = self.backdrop(x, y)
+            delta_nabla_b, delta_nabla_w = self.backdrop(x.reshape(784,1), y)
             nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
             nabla_w = [nb+dnw for nb, dnw in zip(nabla_w, delta_nabla_w)]
         self.weights = [w - (eta/len(mini_batch))*nw
@@ -146,7 +146,7 @@ class Network(object):
         activations = [x] # a list to store all activation, layer by layer
         zs = [] # list to store all the z vectors, layers by layers
         for b, w in zip(self.biases, self.weights):
-            z = np.dot(w, activation)
+            z = np.dot(w, activation)+b
             zs.append(z)
             activation = sigmoid(z)
             activations.append(activation)

@@ -14,7 +14,7 @@ training_data_old, test_data_old = mnist.load_data()
 training_data = list(zip(training_data_old[0], training_data_old[1]))
 test_data = list(zip(test_data_old[0], test_data_old[1]))
 
-net = network.Network([50,3,2])
+net = network.Network([784,30,10])
 
 net.SGD(training_data = training_data,
         epochs = 30, 
