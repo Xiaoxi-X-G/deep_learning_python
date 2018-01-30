@@ -30,6 +30,11 @@ def print_img(dat, ind):
         
         
 #____________________________________
+def vectorize(n):
+    # Return a vector with all 0s, but a 1 in nth position
+    v = np.zeros((10,1))
+    v[n] = 1
+    return v
 
 
 def sigmoid(z):
@@ -59,7 +64,7 @@ class Network(object):
 
         
     # stochastic gradient descent    
-    def SGD(self, training_data, epochs, mini_batch_size, 
+    def SGD(self, training_data, epochs, mini_batch_size,
             eta, test_data=None):
         """ 
         Train ann using mini-batch stochastic gradient descent.
@@ -79,16 +84,27 @@ class Network(object):
         mini-batch gradient descent: only use b examples in each incremental 
              
         """
-        if test_data: n_test = len(test_data)
+        
+        training_data = list(training_data)
         n = len(training_data)
+        if test_data:
+            test_data = list(test_data)
+            n_test = len(test_data)
+
         for j in range(epochs): # 0 - epochs
-#            rnd_ind = np.arange(training_data[0].shape[0])
-#            random.shuffle(rnd_ind)
-#            training_data = (training_data[0][rnd_ind], training_data[1][rnd_ind])
+#            rnd_ind = np.arange(len(training_data[0]))
             random.shuffle(training_data)
             
-            # syntex
-            mini_batches = [
+#            training_inputs = []
+#            training_results =[]
+#            for i in rnd_ind:
+#                training_inputs.append(training_data[0][i])
+#                training_results.append(training_data[1][i])
+#            training_data = (training_inputs, training_results)
+            
+            
+            # a list of tuples
+            mini_batches = [  
                     training_data[k: k+mini_batch_size]
                     for k in range(0, n , mini_batch_size) # (start, stop, interval)
                     ]
@@ -113,7 +129,7 @@ class Network(object):
         nabla_w = [np.zeros(w.shape) for w in self.weights]
         
         for x,y in mini_batch:
-            delta_nabla_b, delta_nabla_w = self.backdrop(x.reshape(784,1), y)
+            delta_nabla_b, delta_nabla_w = self.backdrop(x, y)
             nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
             nabla_w = [nb+dnw for nb, dnw in zip(nabla_w, delta_nabla_w)]
         self.weights = [w - (eta/len(mini_batch))*nw
