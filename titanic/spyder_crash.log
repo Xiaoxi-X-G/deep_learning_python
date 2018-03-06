@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\spyder\app\mainwindow.py", line 3011, in main
+    mainwindow = run_spyder(app, options, args)
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\spyder\app\mainwindow.py", line 2913, in run_spyder
+    main.setup()
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\spyder\app\mainwindow.py", line 784, in setup
+    from spyder.plugins.help import Help
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\spyder\plugins\help.py", line 33, in <module>
+    from spyder.utils.help.sphinxify import (CSS_PATH, generate_context,
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\spyder\utils\help\sphinxify.py", line 30, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\jinja2\__init__.py", line 81, in <module>
+    _patch_async()
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\jinja2\__init__.py", line 77, in _patch_async
+    from jinja2.asyncsupport import patch_all
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\jinja2\asyncsupport.py", line 13, in <module>
+    import asyncio
+  File "C:\Users\Xiaoxi\Anaconda3\lib\asyncio\__init__.py", line 21, in <module>
+    from .base_events import *
+  File "C:\Users\Xiaoxi\Anaconda3\lib\asyncio\base_events.py", line 17, in <module>
+    import concurrent.futures
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\concurrent\futures\__init__.py", line 8, in <module>
+    from concurrent.futures._base import (FIRST_COMPLETED,
+  File "C:\Users\Xiaoxi\Anaconda3\Lib\site-packages\concurrent\futures\_base.py", line 381
+    raise exception_type, self._exception, self._traceback
+                        ^
+SyntaxError: invalid syntax
